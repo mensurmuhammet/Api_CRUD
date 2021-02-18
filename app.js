@@ -81,7 +81,7 @@ app.delete('/:id', (req, res) => {
 
 
 // Add user
-app.post('', (req, res) => {
+app.post('/adduser/', (req, res) => {
 
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -104,7 +104,7 @@ app.post('', (req, res) => {
 
 
 // Update a record / user
-app.put('', (req, res) => {
+app.put('/:id', (req, res) => {
 
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -116,7 +116,7 @@ app.put('', (req, res) => {
             connection.release() // return the connection to pool
 
             if(!err) {
-                res.send(`User with the name: ${name} has been added.`)
+                res.send(`User with the name: ${firstName} has been updated.`)
             } else {
                 console.log(err)
             }
